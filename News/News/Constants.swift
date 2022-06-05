@@ -9,7 +9,7 @@ import Foundation
 
 
 struct Constants {
-    static let apiKey = "bc8d065414fd37d62ae2d00b310b0f8c"
+    static let apiKey = "56ecb06b06254e0dbd06a108053b227b"
     static let techCrunchApi = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=\(Constants.apiKey)"
     static let wallStreetJournalApi = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=\(Constants.apiKey)"
     static let businessHeadlinesUs = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=\(Constants.apiKey)"

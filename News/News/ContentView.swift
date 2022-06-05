@@ -7,25 +7,32 @@
 
 import SwiftUI
 
+enum NewsTopics {
+    case techCrunch
+    case wallStreet
+    case businessHeadline
+    case apple
+    case tesla
+}
+
 struct ContentView: View {
+    
     var body: some View {
-        
         let viewModel = ViewModel()
-        List(viewModel.newsSource, id: \.self) { newsType in
-            Text(newsType)
-            
+        
+        NavigationView{
+            List(viewModel.newsSource, id: \.self) { newsType in
+                HStack {
+                    Text(newsType)
+                }.onTapGesture {
+                    print("Typed")
+                }
+                    .navigationTitle("News Topics")
+            }
         }
     }
 }
 
-struct ListRow: View {
-    var body: some View {
-        HStack{
-            Text("abc")
-        }
-    }
-    
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

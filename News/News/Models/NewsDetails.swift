@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct NewsDetails: Decodable {
+    var author: String?
+    var title: String?
+    var urlToImage: String?
+    var url: String?
+}
