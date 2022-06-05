@@ -14,6 +14,7 @@ struct DetailsView: View {
         GridItem(.flexible(minimum: 100, maximum: 200), alignment: .top)
     ]
     @ObservedObject var viewModel = NewsDetailsViewModel()
+    @State var selectedNewsCategory: String
     
     var body: some View {
         ScrollView {
@@ -31,6 +32,6 @@ struct DetailsView: View {
 
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsView()
+        DetailsView(selectedNewsCategory: "")
     }
 }
