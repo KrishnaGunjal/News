@@ -9,19 +9,7 @@ import Foundation
 import SwiftUI
 
 class NewsDetailsViewModel: ObservableObject {
-    @Published var newsData = NewsDetails()
-    
-    private var persistentDataList = NewsDetails(){
-        didSet {
-            setData()
-        }
-    }
-    
-    fileprivate func setData(){
-        DispatchQueue.main.async {
-            self.newsData = self.persistentDataList
-        }
-    }
+    var newsData = [Article]()
     
     public func getDatalist(newsURI: String) {
         ApiService.shared.getData(url: newsURI) { result in
@@ -31,7 +19,7 @@ class NewsDetailsViewModel: ObservableObject {
                 break
                 
             case .success(let datalist):
-                self.persistentDataList = datalist
+                self.newsData = datalist.articles
             }
         }
     }
