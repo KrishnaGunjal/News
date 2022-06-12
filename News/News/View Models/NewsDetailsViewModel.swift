@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 class NewsDetailsViewModel: ObservableObject {
-    var newsData = [Article]()
+    @Published var newsData = [Article]()
     
     public func getDatalist(newsURI: NewsTopics) {
         var selectedUrl: String?
@@ -33,7 +33,9 @@ class NewsDetailsViewModel: ObservableObject {
                 break
                 
             case .success(let datalist):
-                self.newsData = datalist.articles
+                DispatchQueue.main.async {
+                    self.newsData = datalist.articles
+                }
             }
         }
     }

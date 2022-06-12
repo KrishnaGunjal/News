@@ -23,7 +23,6 @@ struct ContentView: View {
                     Text(topic.rawValue)
                 })
                     .navigationTitle("News Topics")
-                
             }
         }
     }

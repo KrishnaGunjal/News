@@ -7,14 +7,14 @@
 
 import Foundation
 
-struct News: Codable {
+class News: Codable {
     let status: String
     let totalResults: Int
     let articles: [Article]
 }
 
 // MARK: - Article
-struct Article: Codable, Identifiable {
+class Article: Codable, Identifiable, ObservableObject {
     let id = UUID()
     
     let source: Source
@@ -33,7 +33,7 @@ struct Article: Codable, Identifiable {
 }
 
 // MARK: - Source
-struct Source: Codable {
+class Source: Codable {
     let id: String?
     let name: String
 }

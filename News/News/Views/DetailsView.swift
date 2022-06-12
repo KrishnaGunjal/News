@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DetailsView: View {
-
+    
     @ObservedObject var viewModel = NewsDetailsViewModel()
     var selectedNewsCategory: NewsTopics?
     
@@ -16,18 +16,10 @@ struct DetailsView: View {
         ScrollView {
             ForEach(viewModel.newsData ){news in
                 Text(news.title)
-                    .fixedSize(horizontal: false, vertical: true) 
             }
-            
         }.onAppear(
             perform: {
-                if let selectedCategory = selectedNewsCategory{
-                    self.viewModel.getDatalist(newsURI: selectedCategory)
-                }else{
-                    Text("No data available")
-                }
-                
-                
+                self.viewModel.getDatalist(newsURI: selectedNewsCategory!)
             }
         )
     }
@@ -35,6 +27,6 @@ struct DetailsView: View {
 
 struct DetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailsView(viewModel: NewsDetailsViewModel(), selectedNewsCategory: .techCrunch)
+        DetailsView()
     }
 }
