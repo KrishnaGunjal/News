@@ -15,8 +15,19 @@ struct DetailsView: View {
     var body: some View {
         ScrollView {
             ForEach(viewModel.newsData ){news in
-                Text(news.title)
+                VStack(alignment: .leading, spacing: 5){
+                    Text(news.title)
+                        .font(.caption)
+                        
+                    Text(news.author!)
+                        .font(.caption2)
+                    
+                    Text(news.articleDescription)
+                        .font(.caption2)
+                }.padding(5)
+                
             }
+            
         }.onAppear(
             perform: {
                 self.viewModel.getDatalist(newsURI: selectedNewsCategory!)

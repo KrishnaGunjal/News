@@ -14,7 +14,8 @@ class News: Codable {
 }
 
 // MARK: - Article
-class Article: Codable, Identifiable, ObservableObject {
+class Article: Codable, Identifiable{
+    
     let id = UUID()
     
     let source: Source
