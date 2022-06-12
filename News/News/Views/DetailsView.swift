@@ -8,27 +8,27 @@
 import SwiftUI
 
 struct DetailsView: View {
-    let items = Array(1...10).map({"Element \($0)"})
-//    let layout = [
-//        GridItem(.flexible(minimum: 100, maximum: 200),spacing: 12),
-//        GridItem(.flexible(minimum: 100, maximum: 200), alignment: .top)
-//    ]
+
     @ObservedObject var viewModel = NewsDetailsViewModel()
     var selectedNewsCategory: NewsTopics?
     
-    
     var body: some View {
         ScrollView {
-//            ForEach(selectedNewsCategory!, id: \.self){ item in
-//                Text(selectedNewsCategory!.rawValue)
-//            }
-//            ForEach(selectedNewsCategory!, id:\.self){news in
-//                Text ("\($news)")
-//            }
-            Text(selectedNewsCategory!.rawValue)
+            ForEach(viewModel.newsData ){news in
+                Text(news.title)
+                    .fixedSize(horizontal: false, vertical: true) 
+            }
             
         }.onAppear(
-            
+            perform: {
+                if let selectedCategory = selectedNewsCategory{
+                    self.viewModel.getDatalist(newsURI: selectedCategory)
+                }else{
+                    Text("No data available")
+                }
+                
+                
+            }
         )
     }
 }

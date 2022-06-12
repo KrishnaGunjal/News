@@ -14,7 +14,9 @@ struct News: Codable {
 }
 
 // MARK: - Article
-struct Article: Codable {
+struct Article: Codable, Identifiable {
+    let id = UUID()
+    
     let source: Source
     let author: String?
     let title, articleDescription: String
